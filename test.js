@@ -5,8 +5,10 @@ import { minimumBribes } from './new_year_chaos.js'
 import { minimumSwaps } from './minimum_swaps.js'
 import checkMagazine from './ransom_note.js'
 import sherlockAndAnagrams from './sherlock_and_anagrams.js'
+import freqQuery from './frequency_queries.js'
 
-import { n, queries, queries2 } from './test_data.js'
+import { n, queries, queries2, freq, freqOutput } from './test_data.js'
+
 
 
 var expect = chai.expect
@@ -78,18 +80,35 @@ var expect = chai.expect
 //   }
 // })
 
-const sherlockTests = [
-  { input: 'abba', output: 4},
-  { input: 'abcd', output: 0},
-  { input: 'ifailuhkqq', output: 3},
-  { input: 'kkkk', output: 10},
-  { input: 'cdcd', output: 5},
+// const sherlockTests = [
+//   { input: 'abba', output: 4},
+//   { input: 'abcd', output: 0},
+//   { input: 'ifailuhkqq', output: 3},
+//   { input: 'kkkk', output: 10},
+//   { input: 'cdcd', output: 5},
+// ]
+
+// describe('sherlock()', function() {
+//   for(const { input, output } of sherlockTests){
+//     it(`should correctly count the number of anagrams in ${input}`, () =>  {
+//       expect(sherlockAndAnagrams(input)).to.equal(output)
+//     })
+//   }
+// })
+
+const freqTests = [
+  {input: [[1, 5],[1, 6],[3, 2],[1, 10],[1, 10],[1, 6],[2, 5],[3, 2],],output: ['0','1']},
+  {input: [[3, 4],[2, 1003],[1, 16],[3, 1],],output: ['0','1']},
+  {input: [[1, 3],[2, 3],[3, 2],[1, 4],[1, 5],[1, 5],[1, 4],[3, 2],[2, 4],[3, 2],],output: ['0','1','1']}
 ]
 
-describe('sherlock()', function() {
-  for(const { input, output } of sherlockTests){
-    it(`should correctly count the number of anagrams in ${input}`, () =>  {
-      expect(sherlockAndAnagrams(input)).to.equal(output)
+describe('freqQuery()', function() {
+  for(const { input, output } of freqTests) {
+    it(`should output ${output}`, () => {
+      expect(freqQuery(input)).to.eql(output)
     })
   }
+  it('should also work for large inputs', () => {
+    expect(freqQuery(freq)).to.eql(freqOutput)
+  })
 })

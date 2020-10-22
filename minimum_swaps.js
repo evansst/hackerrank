@@ -3,7 +3,7 @@ export function minimumSwaps(arr) {
   let map = arr.reduce((map, e, i) => {
     map[e] = i + 1
     return map
-  }, new Map())
+  }, {})
 
   for(let i = 1; i <= arr.length; i++) {
     if(map[i] != i) {
