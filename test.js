@@ -4,6 +4,7 @@ import { arrayManipulation } from './array_manipulation.js'
 import { minimumBribes } from './new_year_chaos.js'
 import { minimumSwaps } from './minimum_swaps.js'
 import checkMagazine from './ransom_note.js'
+import sherlockAndAnagrams from './sherlock_and_anagrams.js'
 
 import { n, queries, queries2 } from './test_data.js'
 
@@ -53,26 +54,42 @@ var expect = chai.expect
 //   }
 // })
 
-const ransomTests = [
-  { 
-    input: {
-      mag: ['give', 'me', 'one', 'grand', 'today', 'night'],
-      note: ['give', 'one', 'grand', 'today']
-    },
-    output: 'Yes'
-  },{
-    input: { 
-      mag: ['two', 'times', 'three', 'is', 'not', 'four'],
-      note: ['two', 'times', 'two', 'is', 'four']
-    },
-    output: 'No'
-   },
+// const ransomTests = [
+//   { 
+//     input: {
+//       mag: ['give', 'me', 'one', 'grand', 'today', 'night'],
+//       note: ['give', 'one', 'grand', 'today']
+//     },
+//     output: 'Yes'
+//   },{
+//     input: { 
+//       mag: ['two', 'times', 'three', 'is', 'not', 'four'],
+//       note: ['two', 'times', 'two', 'is', 'four']
+//     },
+//     output: 'No'
+//    },
+// ]
+
+// describe('checkMagazine()', function() {
+//   for(const { input, output } of ransomTests) {
+//     it(`should check if the magazine (${input.mag}) can be used for the ransom note (${input.note})`, () => {
+//       expect(checkMagazine(input.mag, input.note)).to.equal(output)
+//     })
+//   }
+// })
+
+const sherlockTests = [
+  { input: 'abba', output: 4},
+  { input: 'abcd', output: 0},
+  { input: 'ifailuhkqq', output: 3},
+  { input: 'kkkk', output: 10},
+  { input: 'cdcd', output: 5},
 ]
 
-describe('checkMagazine()', function() {
-  for(const { input, output } of ransomTests) {
-    it(`should check if the magazine (${input.mag}) can be used for the ransom note (${input.note})`, () => {
-      expect(checkMagazine(input.mag, input.note)).to.equal(output)
+describe('sherlock()', function() {
+  for(const { input, output } of sherlockTests){
+    it(`should correctly count the number of anagrams in ${input}`, () =>  {
+      expect(sherlockAndAnagrams(input)).to.equal(output)
     })
   }
 })
