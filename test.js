@@ -3,6 +3,7 @@ import chai from 'chai'
 import { arrayManipulation } from './array_manipulation.js'
 import { minimumBribes } from './new_year_chaos.js'
 import { minimumSwaps } from './minimum_swaps.js'
+import checkMagazine from './ransom_note.js'
 
 import { n, queries, queries2 } from './test_data.js'
 
@@ -38,15 +39,40 @@ var expect = chai.expect
 //   })
 // })
 
-const swapTests = [
-  { input: [4, 3, 1, 2], output: 3 },
-  { input: [2, 3, 4, 1, 5], output: 3 },
-  { input: [1, 3, 5, 2, 4, 6, 7], output: 3 },
+// const swapTests = [
+//   { input: [4, 3, 1, 2], output: 3 },
+//   { input: [2, 3, 4, 1, 5], output: 3 },
+//   { input: [1, 3, 5, 2, 4, 6, 7], output: 3 },
+// ]
+
+// describe('minimumSwaps()', function() {
+//   for(const { input, output } of swapTests) {
+//     it('should find the minum number of swaps to sort this array', () => {
+//       expect(minimumSwaps(input)).to.equal(output)
+//     })
+//   }
+// })
+
+const ransomTests = [
+  { 
+    input: {
+      mag: ['give', 'me', 'one', 'grand', 'today', 'night'],
+      note: ['give', 'one', 'grand', 'today']
+    },
+    output: 'Yes'
+  },{
+    input: { 
+      mag: ['two', 'times', 'three', 'is', 'not', 'four'],
+      note: ['two', 'times', 'two', 'is', 'four']
+    },
+    output: 'No'
+   },
 ]
-describe('minimumSwaps()', function() {
-  for(const { input, output } of swapTests) {
-    it('should find the minum number of swaps to sort this array', () => {
-      expect(minimumSwaps(input)).to.equal(output)
+
+describe('checkMagazine()', function() {
+  for(const { input, output } of ransomTests) {
+    it(`should check if the magazine (${input.mag}) can be used for the ransom note (${input.note})`, () => {
+      expect(checkMagazine(input.mag, input.note)).to.equal(output)
     })
   }
 })
