@@ -6,6 +6,8 @@ import { minimumSwaps } from './minimum_swaps.js'
 import checkMagazine from './ransom_note.js'
 import sherlockAndAnagrams from './sherlock_and_anagrams.js'
 import freqQuery from './frequency_queries.js'
+import abbreviation from './abbreviation.js'
+
 
 import { n, queries, queries2, freq, freqOutput } from './test_data.js'
 
@@ -110,3 +112,23 @@ var expect = chai.expect
 //   })
 // })
 
+const abbrevTests = [
+  { a: 'Pi', b: 'P', output: 'YES'},
+  { a: 'AfPZN', b: 'APZNC', output: 'NO' },
+  { a: 'LDJAN', b: 'LJJM', output:  'NO' },
+  { a: 'UMKFW', b: 'UMKFW', output: 'YES' },
+  { a: 'KXzQ', b: 'K', output: 'NO' },
+  { a: 'LIT', b: 'LIT', output: 'YES' },
+  { a: 'QYCH', b: 'QYCH', output: 'YES' },
+  { a: 'DFIQG', b: 'DFIQG', output: 'YES' },
+  { a: 'sYOCa', b: 'YOCN', output: 'NO' },
+  { a: 'JHMWY', b: 'HUVPW', output: 'NO' },
+]
+
+describe('should compare all of these strings', function() {
+  for(const { a, b, output } of abbrevTests) {
+    it(`should return ${output} for a: ${a} and b: ${b} `, () => {
+      expect(abbreviation(a, b)).to.equal(output)
+    })
+  }
+})
