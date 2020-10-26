@@ -1,4 +1,4 @@
-// export function arrayManipulation(n, queries) {
+// function arrayManipulation(n, queries) {
 //   let array = Array(n).fill(0)
 //   let max = -Infinity
 
@@ -33,19 +33,21 @@
 //   return array
 // }
 
-export const arrayManipulation = (n, queries) => {
-  let array = Array(n + 1).fill(0)
-  let max = 0
+const arrayManipulation = (n, queries) => {
+  let max = 0;
 
-  for(const [a, b, k] of queries) {
-    array[a] += k
-    array[b + 1] -= k
+  const array = queries.reduce((acc, [a, b, k]) => {
+    acc[a] += k;
+    acc[b + 1] -= k;
+    return acc;
+  }, Array(n + 1).fill(0));
+
+  for (let i = 1; i < array.length; i += 1) {
+    array[i] += array[i - 1];
+    max = array[i] > max ? array[i] : max;
   }
 
-  for(let i = 1; i < array.length; i++) {
-    array[i] += array[i - 1]
-    max = array[i] > max ? array[i] : max
-  }
-  
-  return max
-}
+  return max;
+};
+
+export default arrayManipulation;

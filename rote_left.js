@@ -1,12 +1,13 @@
-function rotLeft(a, d) {
-  while(d > 0) {
-    [...a].push([...a].shift())
-    d--
+function rotLeft(array, shifts) {
+  const a = [...array];
+  let d = shifts;
+
+  while (d > 0) {
+    a.push(a.shift());
+    d -= 1;
   }
 
-  return a
+  return a;
 }
 
-console.log(rotLeft([1, 2, 3, 4, 5], 4))
-
-console.log([1,2,3,4,5].slice(0,1))
+console.log(rotLeft([1, 2, 3, 4, 5], 4));

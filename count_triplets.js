@@ -17,22 +17,25 @@
 // }
 
 function countTriplets(array, r) {
-  let s = 0
+  let sum = 0;
   const a = array.reduce((acc, v) => {
-    acc[v] = acc[v] ? acc[v] + 1 : 1
-    return acc
-  }, {})
-  const b = {}
+    acc[v] = (acc[v] || 0) + 1;
+    return acc;
+  }, {});
+  const b = {};
 
-  for(const i of array) {
-    const j = Math.floor(i / r)
-    const k = i * r
-    a[i] -= 1
-    if(b[j] && a[k] && !(i % r))
-      s += b[j] * a[k]
+  array.forEach((i) => {
+    const j = Math.floor(i / r);
+    const k = i * r;
+    a[i] -= 1;
+    if (b[j] && a[k] && !(i % r)) {
+      sum += b[j] * a[k];
+    }
 
-    b[i] = b[i] ? b[i] + 1 : 1
-  }
+    b[i] = b[i] ? b[i] + 1 : 1;
+  });
 
-  return s
+  return sum;
 }
+
+export default countTriplets;

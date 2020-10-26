@@ -123,12 +123,12 @@ const abbrevTests = [
   { a: 'DFIQG', b: 'DFIQG', output: 'YES' },
   { a: 'sYOCa', b: 'YOCN', output: 'NO' },
   { a: 'JHMWY', b: 'HUVPW', output: 'NO' },
-]
+];
 
-describe('should compare all of these strings', function() {
-  for(const { a, b, output } of abbrevTests) {
+describe('should compare all of these strings', () => {
+  abbrevTests.forEach(({ a, b, output }) => {
     it(`should return ${output} for a: ${a} and b: ${b} `, () => {
-      expect(abbreviation(a, b)).to.equal(output)
-    })
-  }
-})
+      expect(abbreviation(a, b)).to.equal(output);
+    });
+  });
+});
