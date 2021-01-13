@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 function sockMerchant(_n, array) {
   return [...array
     .reduce((counts, sock) => counts.set(sock, (counts.get(sock) || 0) + 1), new Map())

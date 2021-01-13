@@ -1,17 +1,16 @@
-import chai from 'chai'
+import chai from 'chai';
 
-import { arrayManipulation } from './array_manipulation.js'
-import { minimumBribes } from './new_year_chaos.js'
-import { minimumSwaps } from './minimum_swaps.js'
-import checkMagazine from './ransom_note.js'
-import sherlockAndAnagrams from './sherlock_and_anagrams.js'
-import freqQuery from './frequency_queries.js'
-import abbreviation from './abbreviation.js'
+// import arrayManipulation from './array_manipulation.js';
+// import minimumBribes from './new_year_chaos.js';
+// import minimumSwaps from './minimum_swaps.js';
+// import checkMagazine from './ransom_note.js';
+// import sherlockAndAnagrams from './sherlock_and_anagrams.js';
+// import freqQuery from './frequency_queries.js';
+import abbreviation from './abbreviation.js';
 
+// import { n, queries, queries2, freq, freqOutput } from './test_data';
 
-import { n, queries, queries2, freq, freqOutput } from './test_data.js'
-
-var expect = chai.expect
+const { expect } = chai;
 
 // describe('arrayManipulation()', function() {
 //   this.timeout(0)
